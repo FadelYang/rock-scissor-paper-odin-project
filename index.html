@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Scissor Paper Game</title>
+</head>
+
+<body>
+    <script>
+        console.log("Hello JS");
+
+        function getComputerChoice() {
+            let choice = ['rock', 'paper', 'scissors'];
+
+            return choice[(Math.floor(Math.random() * choice.length))];
+        }
+
+        function getPlayerChoice() {
+            let choice = prompt("Masukkan pilihan kamu");
+
+            return choice.toLowerCase();
+        }
+
+        function getGameResult(getComputerChoice, getPlayerChoice) {
+            let computerChoice = getComputerChoice;
+            let playerChoice = getPlayerChoice;
+
+            if (computerChoice == 'rock' && playerChoice == 'scissors') {
+                return 'lose';
+            } else if (computerChoice == 'rock' && playerChoice == 'paper') {
+                return 'win';
+            } else if (computerChoice == 'rock' && playerChoice == 'rock') {
+                return 'draw';
+            } else if (computerChoice == 'paper' && playerChoice == 'rock') {
+                return 'lose';
+            } else if (computerChoice == 'paper' && playerChoice == 'scissors') {
+                return 'win';
+            } else if (computerChoice == 'paper' && playerChoice == 'paper') {
+                return 'draw';
+            } else if (computerChoice == 'scissors' && playerChoice == 'paper') {
+                return 'lose';
+            } else if (computerChoice == 'scissors' && playerChoice == 'rock') {
+                return 'win';
+            } else if (computerChoice == 'scissors' && playerChoice == 'scissors') {
+                return 'draw'
+            }
+        }
+
+        function createResultMessage(getGameResult, getComputerChoice, getPlayerChoice) {
+            let computerChoice = getComputerChoice;
+            let playerChoice = getPlayerChoice;
+            let result = getGameResult;
+
+            if (result == 'win') {
+                return `you win, ${playerChoice} beat ${computerChoice}`;
+            } else if (result == 'lose') {
+                return `you lose, ${computerChoice} beat ${playerChoice}`;
+            } else if (result == 'draw') {
+                return `you draw, ${computerChoice} and ${playerChoice} are equal`;
+            } else {
+                return 'please type right choice. paper, scissors, or rock!'
+            }
+        }
+
+        function calculateScore(getGameResult, playerScore, computerScore) {
+            let result = getGameResult;
+
+            if (result == 'win') {
+                playerScore = playerScore + 1;
+            } else if (result == 'lose') {
+                computerScore = computerScore + 1;
+            }
+
+            return {
+                playerScore,
+                computerScore
+            }
+        }
+
+    </script>
+</body>
+
+</html>
