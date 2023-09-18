@@ -64,31 +64,57 @@
             }
         }
 
-        function calculateScore(getGameResult) {
+        function calculateScore(getGameResult, playerScore, computerScore) {
             let result = getGameResult;
 
             if (result == 'win') {
-                return playerScore + 1;
+                playerScore = playerScore + 1;
             } else if (result == 'lose') {
-                return computerScore + 1;
+                computerScore = computerScore + 1;
+            }
+
+            return {
+                playerScore,
+                computerScore
             }
         }
 
         function playground(playerChoice, computerChoice) {
             let gameResult = getGameResult(computerChoice, playerChoice);
-            let resultMessage = createResultMessage(gameResult, computerChoice, playerChoice);
-            
-            return resultMessage;
+
+            return gameResult;
         }
 
-        function game() {}
+        function game() {
+            let playerScore = 0;
+            let computerScore = 0;
+            let round = 1
 
-        const playerChoice = getPlayerChoice();
-        const computerChoice = getComputerChoice();
+            while (true) {
+                const playerChoice = getPlayerChoice();
+                const computerChoice = getComputerChoice();
+                let result = playground(playerChoice, computerChoice);
+                let allScore = calculateScore(result, playerScore, computerScore);
+                playerScore = allScore['playerScore'];
+                computerScore = allScore['computerScore'];
 
-        console.log(computerChoice);
-        console.log(playerChoice);
-        console.log(playground(playerChoice, computerChoice));
+                console.log(`ROUND ${round}`);
+                console.log(createResultMessage(result, computerChoice, playerChoice));
+                console.log(`Player score: ${playerScore}`);
+                console.log(`Computer score: ${computerScore}`);
+                round++
+
+                if (playerScore == 5) {
+                    console.log('YOU WIN');
+                    break;
+                } else if (computerScore == 5) {
+                    console.log('YOU LOSE');
+                    break;
+                }
+            }
+        }
+        game()
+
 
     </script>
 </body>
