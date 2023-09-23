@@ -32,7 +32,7 @@ buttons.forEach((button) => {
         // create history display
         let resultDiv = document.querySelector('#resultHistory')
 
-        let resultText = document.createElement('li');
+        let resultText = document.createElement('p');
         resultText.textContent = createResultMessage(result, computerChoice, playerChoice);
 
         let playerScoreText = document.querySelector('#playerScoreText');
@@ -88,7 +88,8 @@ function endGame() {
     buttons.forEach((button) => {
         console.log(button.id);
         if (button.id !== 'newGameButton') {
-            button.setAttribute('disabled', '')
+            button.setAttribute('disabled', '');
+            
         }
 
     })
