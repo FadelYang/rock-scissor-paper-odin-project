@@ -22,13 +22,24 @@ buttons.forEach((button) => {
         playerScore = allScore['playerScore'];
         computerScore = allScore['computerScore'];
 
+        // create history display
+        let resultDiv = document.querySelector('#result')
+
+        let resultText = document.createElement('p');
+        resultText.textContent = createResultMessage(result, computerChoice, playerChoice);
+
+        let playerScoreText = document.querySelector('#playerScoreText');
+        playerScoreText.textContent = `Player score: ${playerScore}`;
+
+        let computerScoreText = document.querySelector('#computerScoreText');
+        computerScoreText.textContent = `Computer score: ${computerScore}`;
+
+        resultDiv.appendChild(resultText);
+
         console.log(`ROUND ${round}`);
-        console.log(createResultMessage(result, computerChoice, playerChoice));
-        console.log(`Player score: ${playerScore}`);
-        console.log(`Computer score: ${computerScore}`);
         round += 1
 
-        if (playerScore == 5) {
+        if (round == 5) {
             console.log('YOU WIN');
         } else if (computerScore == 5) {
             console.log('YOU LOSE');
