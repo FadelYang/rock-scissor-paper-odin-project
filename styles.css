@@ -1,0 +1,35 @@
+body {
+    background-color: blanchedalmond;
+    color: black;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 100px;
+}
+
+.container img {
+    border: 2px solid black;
+    padding: 50px;
+}
+
+.container img:hover {
+    background-color: azure;
+}
+
+.title {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.result {
+    margin-top: 50px;
+    text-align: center;
+}
+
+button {
+    background-color: white;
+    padding: 0;
+}

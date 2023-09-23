@@ -5,27 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Scissor Paper Game</title>
+    <link rel="stylesheet" href="./styles.css">
     <script src="./app.js" defer></script>
 </head>
 
 <body>
-    <button id="rockButton">Rock</button>
-    <button id="paperButton">Paper</button>
-    <button id="scissors">Scissors</button>
-    <button id="newGameButton">New game</button>
 
-    <p id="playerChoice">Player choose: </p>
 
-    <div id="container">
-        <p id="playerScoreText">Player Score: </p>
-        <p id="computerScoreText">Computer Score: </p>
-
-        <ul id="resultHistory">
-
-        </ul>
-
-        <p id="finalResult"></p>
+    <div class="title">
+        <h1>Rock Paper Scissors Game</h1>
+        <h4>Choose yours</h4>
     </div>
+
+    <button id="newGameButton">New game</button>
+    <div class="container">
+        <button id="rockButton">
+            <img src="./images/icons8-rock-100.png" alt="Rock">
+        </button>
+        <button id="paperButton">
+            <img src="./images/icons8-paper-100.png" alt="Paper">
+        </button>
+        <button id="scissors">
+            <img src="./images/icons8-scissors-100.png" alt="Scissors">
+        </button>
+    </div>
+
+    <div class="result">
+        <p id="playerChoice">Player choose: </p>
+
+        <div class="score-container">
+            <p id="playerScoreText">Player Score: </p>
+            <p id="computerScoreText">Computer Score: </p>
+
+            <ul id="resultHistory">
+
+            </ul>
+
+            <p id="finalResult"></p>
+        </div>
+    </div>
+
 </body>
 
 </html>
