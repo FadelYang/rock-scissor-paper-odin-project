@@ -8,19 +8,57 @@
 </head>
 
 <body>
+    <button id="rockButton">Rock</button>
+    <button id="paperButton">Paper</button>
+    <button id="scissors">Scissors</button>
+
+    <p id="playerChoice">Paley choose: </p>
+
+    <div id="result"></div>
+
     <script>
         console.log("Hello JS");
+
+        let playerChoice = null;
+        let round = 0;
+        let playerScore = 0;
+        let computerScore = 0;
+        let buttons = document.querySelectorAll('button');
+
+
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                buttonChoose = `Player Choose: ${button.innerHTML}`
+                displayChooseButton = document.querySelector('#playerChoice');
+
+                displayChooseButton.textContent = buttonChoose;
+                playerChoice = button.innerHTML.toLowerCase();
+
+                const computerChoice = getComputerChoice();
+                let result = playground(playerChoice, computerChoice);
+                let allScore = calculateScore(result, playerScore, computerScore);
+                playerScore = allScore['playerScore'];
+                computerScore = allScore['computerScore'];
+
+                console.log(`ROUND ${round}`);
+                console.log(createResultMessage(result, computerChoice, playerChoice));
+                console.log(`Player score: ${playerScore}`);
+                console.log(`Computer score: ${computerScore}`);
+                round += 1
+
+                if (playerScore == 5) {
+                    console.log('YOU WIN');
+                } else if (computerScore == 5) {
+                    console.log('YOU LOSE');
+                }
+            })
+        })
+
 
         function getComputerChoice() {
             let choice = ['rock', 'paper', 'scissors'];
 
             return choice[(Math.floor(Math.random() * choice.length))];
-        }
-
-        function getPlayerChoice() {
-            let choice = prompt("Masukkan pilihan kamu");
-
-            return choice.toLowerCase();
         }
 
         function getGameResult(getComputerChoice, getPlayerChoice) {
@@ -84,36 +122,6 @@
 
             return gameResult;
         }
-
-        function game() {
-            let playerScore = 0;
-            let computerScore = 0;
-            let round = 1
-
-            while (true) {
-                const playerChoice = getPlayerChoice();
-                const computerChoice = getComputerChoice();
-                let result = playground(playerChoice, computerChoice);
-                let allScore = calculateScore(result, playerScore, computerScore);
-                playerScore = allScore['playerScore'];
-                computerScore = allScore['computerScore'];
-
-                console.log(`ROUND ${round}`);
-                console.log(createResultMessage(result, computerChoice, playerChoice));
-                console.log(`Player score: ${playerScore}`);
-                console.log(`Computer score: ${computerScore}`);
-                round++
-
-                if (playerScore == 5) {
-                    console.log('YOU WIN');
-                    break;
-                } else if (computerScore == 5) {
-                    console.log('YOU LOSE');
-                    break;
-                }
-            }
-        }
-        game()
 
 
     </script>
