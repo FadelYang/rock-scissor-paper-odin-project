@@ -2,10 +2,17 @@
 console.log("Hello JS");
 
 let playerChoice = null;
-let round = 0;
+let round = 1;
 let playerScore = 0;
 let computerScore = 0;
 let buttons = document.querySelectorAll('button');
+let finalResultText = null;
+
+let newGameButton = document.querySelector('#newGameButton');
+
+newGameButton.addEventListener('click', () => {
+    location.reload()
+})
 
 
 buttons.forEach((button) => {
@@ -23,9 +30,9 @@ buttons.forEach((button) => {
         computerScore = allScore['computerScore'];
 
         // create history display
-        let resultDiv = document.querySelector('#result')
+        let resultDiv = document.querySelector('#resultHistory')
 
-        let resultText = document.createElement('p');
+        let resultText = document.createElement('li');
         resultText.textContent = createResultMessage(result, computerChoice, playerChoice);
 
         let playerScoreText = document.querySelector('#playerScoreText');
@@ -34,20 +41,58 @@ buttons.forEach((button) => {
         let computerScoreText = document.querySelector('#computerScoreText');
         computerScoreText.textContent = `Computer score: ${computerScore}`;
 
+        let finalResult = document.querySelector('#finalResult');
+
         resultDiv.appendChild(resultText);
 
         console.log(`ROUND ${round}`);
-        round += 1;
 
         if (round == 5) {
+
             if (playerScore > computerScore) {
-                alert('YOU WIN');
+                setTimeout(function () {
+                    alert('YOU WIN');
+                }, 0);
+
+                finalResult.textContent = 'YOU WIN';
+
+
+                endGame();
+            } else if (playerScore < computerScore) {
+                setTimeout(function () {
+                    alert('YOU LOSE');
+                }, 0);
+
+                finalResult.textContent = 'YOU LOSE';
+
+                endGame();
             } else {
-                alert('YOU LOSE');
+                setTimeout(function () {
+                    alert('YOU DRAW');
+                }, 0);
+
+                finalResult.textContent = 'YOU DRAW';
+
+                endGame()
             }
         }
+
+        round += 1;
+
     })
 })
+
+function endGame() {
+    buttons = document.querySelectorAll('button');
+
+    buttons.forEach((button) => {
+        console.log(button.id);
+        if (button.id !== 'newGameButton') {
+            button.setAttribute('disabled', '')
+        }
+
+    })
+}
 
 function getComputerChoice() {
     let choice = ['rock', 'paper', 'scissors'];
