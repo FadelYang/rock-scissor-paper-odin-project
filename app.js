@@ -17,11 +17,11 @@ newGameButton.addEventListener('click', () => {
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        buttonChoose = `Player Choose: ${button.innerHTML}`
+        buttonChoose = `Player Choose: ${button.value}`
         displayChooseButton = document.querySelector('#playerChoice');
 
         displayChooseButton.textContent = buttonChoose;
-        playerChoice = button.innerHTML.toLowerCase();
+        playerChoice = button.value.toLowerCase();
 
         const computerChoice = getComputerChoice();
         let result = playground(playerChoice, computerChoice);

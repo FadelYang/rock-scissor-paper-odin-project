@@ -15,7 +15,7 @@ body {
     padding: 50px;
 }
 
-.container img:hover {
+.container button:hover {
     background-color: azure;
 }
 
@@ -32,4 +32,8 @@ body {
 button {
     background-color: white;
     padding: 0;
+}
+
+.container button:disabled {
+    background-color: azure;
 }
