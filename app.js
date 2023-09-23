@@ -37,16 +37,17 @@ buttons.forEach((button) => {
         resultDiv.appendChild(resultText);
 
         console.log(`ROUND ${round}`);
-        round += 1
+        round += 1;
 
         if (round == 5) {
-            console.log('YOU WIN');
-        } else if (computerScore == 5) {
-            console.log('YOU LOSE');
+            if (playerScore > computerScore) {
+                alert('YOU WIN');
+            } else {
+                alert('YOU LOSE');
+            }
         }
     })
 })
-
 
 function getComputerChoice() {
     let choice = ['rock', 'paper', 'scissors'];
