@@ -89,9 +89,9 @@ function endGame() {
         console.log(button.id);
         if (button.id !== 'newGameButton') {
             button.setAttribute('disabled', '');
-            
+        } else {
+            button.classList.add('rainbows-bg');
         }
-
     })
 }
 

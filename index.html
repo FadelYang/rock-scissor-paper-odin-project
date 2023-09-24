@@ -17,7 +17,10 @@
         <h4>Choose yours</h4>
     </div>
 
-    <button id="newGameButton">New game</button>
+    <div class="new-game-button-container">
+        <button id="newGameButton" class="newGameButton">New game</button>
+    </div>
+
     <div class="container">
         <button id="rockButton" value="rock">
             <img src="./images/icons8-rock-100.png" alt="Rock">
@@ -31,17 +34,18 @@
     </div>
 
     <div class="result">
-        <p id="playerChoice">Player choose: </p>
-
-        <div class="score-container">
+        <div class="choice-result">
+            <p id="playerChoice">Player choose: </p>
             <p id="playerScoreText">Player Score: </p>
             <p id="computerScoreText">Computer Score: </p>
+        </div>
 
+        <div class="score-container">
             <div id="resultHistory">
 
             </div>
 
-            <p id="finalResult"></p>
+            <div id="finalResult"></div>
         </div>
     </div>
 
